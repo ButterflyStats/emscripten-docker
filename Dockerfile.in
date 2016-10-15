@@ -50,8 +50,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
 	\
 &&	rm -rf /var/lib/apt/lists/* \
 &&	rm -rf /var/cache/debconf/*-old \
-&&	rm -rf /usr/share/doc/* \
-&&	cp -R /usr/share/locale/en\@* /tmp/ && rm -rf /usr/share/locale/* && mv /tmp/en\@* /usr/share/locale/
+&&	rm -rf /usr/share/doc/*
 
 # SETUP SDK
 ENV EMSCRIPTEN=/emsdk_portable/emscripten/{EMSCRIPTEN_SDK_DIR}
