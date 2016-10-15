@@ -4,8 +4,8 @@ import subprocess, datetime, sys, time, os
 from itertools import repeat
 
 emscripten_git_repo = 'https://github.com/kripken/emscripten/'
-docker_hub_repo = "butterflystats/emscripten/"
-minimum_version = "1.35.0"
+docker_hub_repo = "butterflystats/emscripten"
+minimum_version = "1.36.11"
 queue_file = "queue.txt"
 
 def is_version_at_least(ver, target):
