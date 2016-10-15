@@ -4,7 +4,7 @@ import subprocess, datetime, sys, time, os
 from itertools import repeat
 
 emscripten_git_repo = 'https://github.com/kripken/emscripten/'
-docker_hub_repo = "trzeci/emscripten"
+docker_hub_repo = "butterflystats/emscripten/"
 minimum_version = "1.35.0"
 queue_file = "queue.txt"
 
@@ -141,7 +141,7 @@ def generate(builds, serverTags, autopush):
 
 		generate_dockerfile("Dockerfile", build)
 
-		# generate docker image 
+		# generate docker image
 		if subprocess.call(["docker", "build", "-t",  build["docker_name"], "."]):
 			log("[ERROR] Building {tag} failed".format(tag=build["docker_tag"]))
 			continue
@@ -192,4 +192,3 @@ else:
 	pushed_builds = get_server_tags()
 
 	generate(builds, pushed_builds, "autopush" in sys.argv)
-
