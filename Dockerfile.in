@@ -1,5 +1,7 @@
-FROM debian:jessie
-MAINTAINER kontakt@trzeci.eu
+FROM ubuntu
+MAINTAINER me@invokr.org
+
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
 &&	apt-get -y update && apt-get install -y --no-install-recommends \
@@ -19,8 +21,8 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
 &&	find . -name "*.a" -exec rm {} \; \
 &&	emscripten_version=$(find clang/*/src/emscripten-version.txt) \
 &&	mv $emscripten_version emscripten-version.txt \
-&&	rm -rf clang/*/src \ 
-&&	mkdir -p $(echo "$(dirname "$emscripten_version")") \ 
+&&	rm -rf clang/*/src \
+&&	mkdir -p $(echo "$(dirname "$emscripten_version")") \
 &&	mv emscripten-version.txt $emscripten_version \
 &&	rm -rf emscripten/*/.git \
 &&	rm -rf zips \
